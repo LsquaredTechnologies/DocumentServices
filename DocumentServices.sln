@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.22823.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "database", "database", "{F4BBF96E-4BE5-4D20-B5F1-E5583024C932}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tables", "tables", "{0DF01E53-9135-4327-BB0E-CCDD0D7F2D3E}"
+	ProjectSection(SolutionItems) = preProject
+		Database\Tables\MariaDB.sql = Database\Tables\MariaDB.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D91CD266-B80F-4FC6-91BE-50FA0DC21E47}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{CC0F4393-60C7-4CD5-B4E8-262497A9C272}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Lsquared.DocumentServices", "src\Lsquared.DocumentServices\Lsquared.DocumentServices.xproj", "{3D60DC6F-6F9C-4193-BDB5-E255570EE892}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Lsquared.DocumentServices.Host", "src\Lsquared.DocumentServices.Host\Lsquared.DocumentServices.Host.xproj", "{1B3D1033-0FE5-4FF3-B052-B680224B91D7}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Lsquared.DocumentServices.Sharepoint", "src\Lsquared.DocumentServices.Sharepoint\Lsquared.DocumentServices.Sharepoint.xproj", "{22057874-0975-46EE-86AF-4CA2227E2E3C}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Lsquared.DocumentServices.Tests", "test\Lsquared.DocumentServices.Tests\Lsquared.DocumentServices.Tests.xproj", "{D40B3859-DBA8-4E1A-91F8-D63E8320E2D2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C3B05E2E-DE79-4871-B072-19A27D0B24DB}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3D60DC6F-6F9C-4193-BDB5-E255570EE892}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D60DC6F-6F9C-4193-BDB5-E255570EE892}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D60DC6F-6F9C-4193-BDB5-E255570EE892}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D60DC6F-6F9C-4193-BDB5-E255570EE892}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B3D1033-0FE5-4FF3-B052-B680224B91D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B3D1033-0FE5-4FF3-B052-B680224B91D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B3D1033-0FE5-4FF3-B052-B680224B91D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B3D1033-0FE5-4FF3-B052-B680224B91D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22057874-0975-46EE-86AF-4CA2227E2E3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22057874-0975-46EE-86AF-4CA2227E2E3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22057874-0975-46EE-86AF-4CA2227E2E3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22057874-0975-46EE-86AF-4CA2227E2E3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D40B3859-DBA8-4E1A-91F8-D63E8320E2D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D40B3859-DBA8-4E1A-91F8-D63E8320E2D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D40B3859-DBA8-4E1A-91F8-D63E8320E2D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D40B3859-DBA8-4E1A-91F8-D63E8320E2D2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0DF01E53-9135-4327-BB0E-CCDD0D7F2D3E} = {F4BBF96E-4BE5-4D20-B5F1-E5583024C932}
+		{3D60DC6F-6F9C-4193-BDB5-E255570EE892} = {D91CD266-B80F-4FC6-91BE-50FA0DC21E47}
+		{1B3D1033-0FE5-4FF3-B052-B680224B91D7} = {D91CD266-B80F-4FC6-91BE-50FA0DC21E47}
+		{22057874-0975-46EE-86AF-4CA2227E2E3C} = {D91CD266-B80F-4FC6-91BE-50FA0DC21E47}
+		{D40B3859-DBA8-4E1A-91F8-D63E8320E2D2} = {CC0F4393-60C7-4CD5-B4E8-262497A9C272}
+	EndGlobalSection
+EndGlobal

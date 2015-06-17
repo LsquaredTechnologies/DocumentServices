@@ -1,0 +1,31 @@
+﻿{
+    "version": "1.0.0-*",
+    "description": "",
+    "authors": [ "" ],
+    "tags": [ "" ],
+    "projectUrl": "",
+    "licenseUrl": "",
+
+    "dependencies": {
+        "Lsquared.DocumentServices": "1.0.0-*",
+        "System.Xml.XDocument": "4.0.10-beta-22816",
+        "Newtonsoft.Json": "6.0.6",
+        "Microsoft.Net.Http.Client": "1.0.0-beta3-10053"
+    },
+
+    "frameworks": {
+        //"net45": { },
+        //"net451": { },
+        //"net452": { },
+        "dnx451": { },
+        "dnxcore50": {
+            "dependencies": {
+                "System.IO": "4.0.10-beta-22816",
+                "System.Collections": "4.0.10-beta-22816",
+                "System.Linq": "4.0.0-beta-22816",
+                "System.Threading": "4.0.10-beta-22816",
+                "Microsoft.CSharp": "4.0.0-beta-22816"
+            }
+        }
+    }
+}
