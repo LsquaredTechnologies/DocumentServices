@@ -1,0 +1,9 @@
+﻿{
+    "DocumentServices": {
+        "Sharepoint": {
+            "User": "user@domain.com",
+            "Pass": "secret",
+            "Tenant": "domain"
+        }
+    }
+}
