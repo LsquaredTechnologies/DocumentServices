@@ -1,0 +1,24 @@
+﻿@using Lsquared.DocumentServices
+@model IEnumerable<dynamic>
+
+<html>
+<body>
+
+    <ol>
+        @foreach (var item in Model)
+        {
+            <li>
+                @if (item is Document)
+                {
+                    <a href="@item.ViewUri">@item.Name</a>
+                }
+                else if (item is Folder)
+                {
+                    <a href="/documents?path=@item.Path">@item.Name</a>
+                }
+            </li>
+        }
+    </ol>
+
+</body>
+</html>

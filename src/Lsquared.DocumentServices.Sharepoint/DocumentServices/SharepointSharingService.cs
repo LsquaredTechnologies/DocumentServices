@@ -5,7 +5,6 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace Lsquared.DocumentServices
@@ -98,7 +97,7 @@ namespace Lsquared.DocumentServices
                 Host = _options.Domain,
                 Path = string.Format("_api/web/GetFolderByServerRelativeUrl('{0}')/Files/add(url='{1}',overwrite=true)", remoteFolderPath, fileName),
             };
-
+            
             var response = client.PostAsync(builder.Uri, new StreamContent(file)).Result;
 
             if (!response.IsSuccessStatusCode)
@@ -122,7 +121,7 @@ namespace Lsquared.DocumentServices
             };
 
             var fileName = json["Name"].ToString();
-            var extension = Path.GetExtension(fileName).ToUpperInvariant();
+            var extension = System.IO.Path.GetExtension(fileName).ToUpperInvariant();
             if (extension == ".PDF")
             {
                 viewUriBuilder.Path = json["ServerRelativeUrl"].ToString();
@@ -269,7 +268,6 @@ namespace Lsquared.DocumentServices
     </t:RequestSecurityToken>
   </s:Body>
 </s:Envelope>";
-
         }
     }
 }

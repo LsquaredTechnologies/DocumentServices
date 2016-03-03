@@ -1,0 +1,16 @@
+{
+  "profiles": {
+    "kestrel": {
+      "commandName": "kestrel",
+      "environmentVariables": {
+        "Hosting:Environment": "Development"
+      }
+    },
+    "web": {
+      "commandName": "web",
+      "environmentVariables": {
+        "Hosting:Environment": "Development"
+      }
+    }
+  }
+}

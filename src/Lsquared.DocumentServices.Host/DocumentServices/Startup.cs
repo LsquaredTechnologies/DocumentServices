@@ -1,8 +1,13 @@
 ﻿using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
+using Microsoft.AspNet.Mvc.Internal;
 using Microsoft.AspNet.Http;
-using Microsoft.Framework.ConfigurationModel;
-using Microsoft.Framework.DependencyInjection;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration.Json;
+using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
+using System;
+using Microsoft.Extensions.Logging;
 
 namespace Lsquared.DocumentServices.Host
 {
@@ -16,38 +21,61 @@ namespace Lsquared.DocumentServices.Host
         public Startup(IHostingEnvironment env)
         {
             // Setup configuration sources.
-            Configuration = new Configuration()
-                .AddJsonFile("config.json")
-                .AddJsonFile("config.dev.json", optional: false)
-                .AddJsonFile("config.private.json")
-                .AddEnvironmentVariables();
+            var builder = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json", optional: false)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
+
+
+            if (env.IsDevelopment())
+            {
+                builder.AddUserSecrets("documentservices");
+                builder.AddApplicationInsightsSettings(developerMode: true);
+            }
+
+            builder.AddEnvironmentVariables();
+            Configuration = builder.Build();
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services
-                .AddMvc()
-                .ConfigureSharepoint(options =>
-                {
-                    options.Tenant = Configuration.Get("DocumentServices:Sharepoint:Tenant");
-                    options.UserName = Configuration.Get("DocumentServices:Sharepoint:User");
-                    options.Password = Configuration.Get("DocumentServices:Sharepoint:Pass");
-                });
-        }
+            services.AddApplicationInsightsTelemetry(Configuration);
 
-        public void Configure(IApplicationBuilder app)
-        {
-            app.UseMvc(routes =>
+            services.AddMvc()
+                .AddControllersAsServices(new Type[] { typeof(DocumentController) })
+                .AddViewLocalization()
+                .AddRazorOptions(o => { });
+
+            services.ConfigureSharepoint(options =>
             {
-                routes.MapRoute("documents", "documents", new
-                {
-                    controller = "Document",
-                    action = "List"
-                });
-                //routes.MapRoute("documents", "documents", new { controller = "Document", action = "List" });
+                options.Tenant = Configuration.Get("DocumentServices:Sharepoint:Tenant", (string)null);
+                options.UserName = Configuration.Get("DocumentServices:Sharepoint:User", (string)null);
+                options.Password = Configuration.Get("DocumentServices:Sharepoint:Pass", (string)null);
             });
         }
 
-        partial void ConfigurePrivate(IServiceCollection services);
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        {
+            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            loggerFactory.AddDebug();
+
+            app.UseApplicationInsightsRequestTelemetry();
+
+            if (env.IsDevelopment())
+            {
+                app.UseBrowserLink();
+                ////app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                ////app.UseExceptionHandler("/Home/Error");
+            }
+
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute("documents", "documents", new { controller = "Document", action = "List" });
+            });
+        }
+
+        public static void Main(string[] args) => WebApplication.Run<Startup>(args);
     }
 }
